@@ -88,7 +88,7 @@ public abstract class SignatureTestCase extends AbstractOSGiTestCase
 	 * 
 	 * @param name
 	 * @param data
-	 * @see org.osgi.test.cases.signature.tbc.ParserCallback#doAttribute(java.lang.String,
+	 * @see org.osgi.test.support.signature.ParserCallback#doAttribute(java.lang.String,
 	 *      byte[])
 	 */
 	@Override
@@ -104,7 +104,7 @@ public abstract class SignatureTestCase extends AbstractOSGiTestCase
 	 * @param superName
 	 * @param interfaces
 	 * @return
-	 * @see org.osgi.test.cases.signature.tbc.ParserCallback#doClass(int,
+	 * @see org.osgi.test.support.signature.ParserCallback#doClass(int,
 	 *      java.lang.String, java.lang.String, java.lang.String[])
 	 */
 	@Override

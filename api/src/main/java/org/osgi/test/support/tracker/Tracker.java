@@ -24,7 +24,7 @@ public class Tracker {
 	/**
 	 * Wait for a tracked service for the requested amount of milliseconds.
 	 *
-	 * @param millis
+	 * @param timeout the amount of milliseconds to wait
 	 */
 	public static <S, T> T waitForService(final ServiceTracker<S, T> tracker,
 			long timeout) throws InterruptedException {

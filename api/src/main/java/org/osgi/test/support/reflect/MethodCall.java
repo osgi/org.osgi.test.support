@@ -42,7 +42,9 @@ public class MethodCall {
 	/**
 	 * Constructs a new MethodCall with more than one parameter.
 	 * 
-	 * @param name the name of the method
+	 * @param methodInterface the interface declaring the method, or
+	 *        {@code null}
+	 * @param methodName the name of the method
 	 * @param parameters an array containing the parameter types.
 	 */
 	public MethodCall(String methodInterface, String methodName,
@@ -70,7 +72,7 @@ public class MethodCall {
 	 * @return whatever the method returns (see
 	 *         java.lang.reflect.Method.invoke() for details)
 	 * @throws Throwable rethrows anything that was thrown by the reflective
-	 *         invoke call. < b>Note!</b> <code>InvocationTargetException</code>
+	 *         invoke call. <b>Note!</b> <code>InvocationTargetException</code>
 	 *         is unwrapped and the "real" Exception is rethrown!
 	 */
 	public Object invoke(Object o, Object... arguments) throws Throwable {

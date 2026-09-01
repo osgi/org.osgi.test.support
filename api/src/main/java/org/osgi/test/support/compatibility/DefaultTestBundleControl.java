@@ -510,7 +510,7 @@ public abstract class DefaultTestBundleControl extends OSGiTestCase {
 	/**
 	 * Install a bundle.
 	 * 
-	 * @param bundle
+	 * @param url the location of the bundle
 	 * @throws BundleException
 	 */
 	public Bundle installBundle(String url) throws Exception {

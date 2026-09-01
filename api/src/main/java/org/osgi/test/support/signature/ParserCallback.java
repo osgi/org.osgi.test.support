@@ -69,7 +69,7 @@ public interface ParserCallback {
 	 * @param descriptor	Type descriptor
 	 * @param constant		Constant value
 	 */
-	void doField(int access, String methodName, String descriptor,
+	void doField(int access, String fieldName, String descriptor,
 			Object constant);
 
 	/**
