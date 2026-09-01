@@ -4,14 +4,6 @@ Shared support classes for the OSGi TCKs (inlined into the test bundles via -con
 
 Part of the [OSGi Specification Project](https://projects.eclipse.org/projects/technology.osgi).
 
-## Compatible implementations
-
-Implementations known to provide this specification. Additions and
-corrections are welcome — please open a pull request.
-
-| Project | Link | Notes |
-|---------|------|-------|
-| _none listed yet_ | | |
 
 ## Build
 
