@@ -11,8 +11,9 @@ Part of the [OSGi Specification Project](https://projects.eclipse.org/projects/t
 mvn clean verify
 ```
 
-The `build` workflow builds every push and pull request the same way, and
-once a week it deploys a fresh SNAPSHOT to Sonatype Central snapshots.
+The `build` workflow builds every push and pull request the same way; every
+push to `main` deploys a fresh SNAPSHOT to Sonatype Central snapshots, and
+a weekly schedule keeps it fresh in quiet times.
 
 ## Versioning and releases
 
