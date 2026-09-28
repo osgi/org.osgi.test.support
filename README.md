@@ -4,6 +4,20 @@ Shared support classes for the OSGi TCKs (inlined into the test bundles via -con
 
 Part of the [OSGi Specification Project](https://projects.eclipse.org/projects/technology.osgi).
 
+## Modules
+
+- `api` (`org.osgi.tck:org.osgi.test.support`): the shared support classes.
+- `tck/signature` (`org.osgi.tck:org.osgi.tck.signature`): the TCK signature
+  test on JUnit 5, without a dependency on `org.osgi.test.support`. A
+  test-case bundle subclasses `org.osgi.tck.signature.AbstractSignatureTest`
+  with an empty body, embeds the package with
+  `-conditionalpackage: org.osgi.tck.signature.*`, and lets the bnd
+  SignatureTest plugin (`-plugin.signaturetest: SignatureTest` with the
+  packages in `-signaturetest`) generate the signature files under
+  `OSGI-INF/signature`.
+- `tck-bnd-plugins` (`org.osgi.tck:tck-bnd-plugins`): the bnd plugins of the
+  TCK builds.
+
 
 ## Build
 
