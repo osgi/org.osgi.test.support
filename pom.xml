@@ -56,6 +56,7 @@
 
 	<modules>
 		<module>api</module>
+		<module>tck</module>
 		<module>tck-bnd-plugins</module>
 	</modules>
 
