@@ -54,6 +54,10 @@
 		</pluginRepository>
 	</pluginRepositories>
 
+	<properties>
+		<osgi.scm.repository>osgi/org.osgi.test.support</osgi.scm.repository>
+	</properties>
+
 	<modules>
 		<module>api</module>
 		<module>tck</module>
