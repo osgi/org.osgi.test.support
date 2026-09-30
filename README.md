@@ -1,5 +1,9 @@
 # org.osgi.test.support
 
+[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/osgi/org.osgi.test.support/badge)](https://securityscorecards.dev/viewer/?uri=github.com/osgi/org.osgi.test.support)
+[![build](https://github.com/osgi/org.osgi.test.support/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/osgi/org.osgi.test.support/actions/workflows/build.yml)
+[![Maven Central](https://img.shields.io/maven-central/v/org.osgi.tck/org.osgi.test.support)](https://central.sonatype.com/artifact/org.osgi.tck/org.osgi.test.support)
+
 Shared support classes for the OSGi TCKs (inlined into the test bundles via -conditionalpackage; released as org.osgi.tck:org.osgi.test.support for the Maven builds)
 
 Part of the [OSGi Specification Project](https://projects.eclipse.org/projects/technology.osgi).
