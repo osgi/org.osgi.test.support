@@ -21,7 +21,7 @@
 		<dependency>
 			<groupId>biz.aQute.bnd</groupId>
 			<artifactId>biz.aQute.bndlib</artifactId>
-			<version>${bnd.old.version}</version>
+			<version>${bnd.version}</version>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
