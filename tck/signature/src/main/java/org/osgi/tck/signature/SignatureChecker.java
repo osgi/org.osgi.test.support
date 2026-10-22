@@ -37,8 +37,13 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.osgi.framework.Bundle;
+import org.osgi.framework.namespace.PackageNamespace;
+import org.osgi.framework.wiring.BundleRequirement;
+import org.osgi.framework.wiring.BundleWire;
 import org.osgi.framework.wiring.BundleWiring;
 
 /**
@@ -46,6 +51,10 @@ import org.osgi.framework.wiring.BundleWiring;
  * signature files ({@code OSGI-INF/signature/**}) that the bnd SignatureTest
  * plugin put into the test bundle. Free of any test framework; see
  * {@link AbstractSignatureTest} for the JUnit 5 test around it.
+ * <p>
+ * A package the test bundle imports with {@code resolution:=optional} and
+ * that is not wired is not checked: the specification does not require the
+ * framework to export it.
  */
 public class SignatureChecker implements ParserCallback {
 	private final Bundle					bundle;
@@ -56,6 +65,10 @@ public class SignatureChecker implements ParserCallback {
 	private Map<String,Field>				fields;
 	private Set<String>						found;
 	private Set<String>						missing;
+	private final Set<String>				notWired;
+
+	private static final Pattern			PACKAGE_FILTER	= Pattern
+			.compile("\\(osgi\\.wiring\\.package=([^)]+)\\)");
 
 	/**
 	 * @param bundle the test bundle that carries the signature files; the
@@ -66,6 +79,37 @@ public class SignatureChecker implements ParserCallback {
 		this.bundle = bundle;
 		BundleWiring wiring = bundle.adapt(BundleWiring.class);
 		this.bundleClassLoader = (wiring == null) ? null : wiring.getClassLoader();
+		this.notWired = optionalImportsNotWired(wiring);
+	}
+
+	/**
+	 * The packages the bundle imports with resolution:=optional that are not
+	 * wired.
+	 */
+	private static Set<String> optionalImportsNotWired(BundleWiring wiring) {
+		Set<String> result = new HashSet<String>();
+		if (wiring == null) {
+			return result;
+		}
+		for (BundleRequirement requirement : wiring.getRevision()
+				.getDeclaredRequirements(PackageNamespace.PACKAGE_NAMESPACE)) {
+			Map<String,String> directives = requirement.getDirectives();
+			if (PackageNamespace.RESOLUTION_OPTIONAL.equals(directives
+					.get(PackageNamespace.REQUIREMENT_RESOLUTION_DIRECTIVE))) {
+				Matcher m = PACKAGE_FILTER.matcher(String.valueOf(directives
+						.get(PackageNamespace.REQUIREMENT_FILTER_DIRECTIVE)));
+				if (m.find()) {
+					result.add(m.group(1));
+				}
+			}
+		}
+		for (BundleWire wire : wiring
+				.getRequiredWires(PackageNamespace.PACKAGE_NAMESPACE)) {
+			result.remove(wire.getCapability()
+					.getAttributes()
+					.get(PackageNamespace.PACKAGE_NAMESPACE));
+		}
+		return result;
 	}
 
 	/**
@@ -131,6 +175,13 @@ public class SignatureChecker implements ParserCallback {
 		}
 
 		String className = name.replace('/', '.');
+		String packageName = className.substring(0,
+				Math.max(0, className.lastIndexOf('.')));
+		if (notWired.contains(packageName)) {
+			log("#Skipping class: " + className
+					+ ", its package is imported optionally and not wired");
+			return false;
+		}
 		String superClassName = superName.replace('/', '.');
 		log("#Checking class: " + className);
 		try {
