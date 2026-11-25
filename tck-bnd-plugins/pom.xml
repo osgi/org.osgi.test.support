@@ -10,6 +10,7 @@
 	</parent>
 	<groupId>org.osgi.tck</groupId>
 	<artifactId>tck-bnd-plugins</artifactId>
+	<name>OSGi TCK bnd Plugins</name>
 	<description>bnd build plugins for the OSGi TCK builds (SignatureTest,
 		TCKPackaging) — the classes from cnf/src of the osgi/osgi
 		monorepo</description>

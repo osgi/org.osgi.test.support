@@ -9,6 +9,7 @@
 	</parent>
 	<groupId>org.osgi.tck</groupId>
 	<artifactId>org.osgi.test.support</artifactId>
+	<name>OSGi Test Support</name>
 
 	<!--
 		Manage JUnit here on purpose: the parent POM sets the family to 5.12.2,

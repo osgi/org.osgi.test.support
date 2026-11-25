@@ -5,6 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.osgi</groupId>
 	<artifactId>org.osgi.test.support.reactor</artifactId>
+	<name>OSGi Test Support Reactor</name>
 	<version>${revision}</version>
 	<packaging>pom</packaging>
 	<description>Shared support classes for the OSGi TCKs (inlined into the test bundles via -conditionalpackage; released as org.osgi.tck:org.osgi.test.support for the Maven builds)</description>

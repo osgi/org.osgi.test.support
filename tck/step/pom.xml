@@ -9,6 +9,7 @@
 	</parent>
 	<groupId>org.osgi.tck</groupId>
 	<artifactId>org.osgi.tck.step</artifactId>
+	<name>OSGi TCK Test Step</name>
 	<description>The OSGi TCK test steps (TestStep, TestStepProxy). A test-case
 		bundle embeds this package through bnd -conditionalpackage; the test
 		step bundle of a reference implementation registers a TestStep

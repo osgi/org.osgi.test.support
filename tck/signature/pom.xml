@@ -9,6 +9,7 @@
 	</parent>
 	<groupId>org.osgi.tck</groupId>
 	<artifactId>org.osgi.tck.signature</artifactId>
+	<name>OSGi TCK Signature Test</name>
 	<description>The OSGi TCK signature test on JUnit 5. A test-case bundle
 		subclasses AbstractSignatureTest and embeds this package through bnd
 		-conditionalpackage, so the TCK jar stays self-contained.</description>

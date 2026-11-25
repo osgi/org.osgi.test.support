@@ -11,6 +11,7 @@
 	<groupId>org.osgi.tck</groupId>
 	<artifactId>org.osgi.tck.support</artifactId>
 	<packaging>pom</packaging>
+	<name>OSGi TCK Support</name>
 
 	<modules>
 		<module>signature</module>
